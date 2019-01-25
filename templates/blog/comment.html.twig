@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formComment 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <h1>Commentez cet article :</h1>
+
+    {{ form_start(formComment) }}
+    {{ form_row(formComment.content) }}
+    {{ form_row(formComment.author) }}
+
+    <button type="submit" class="btn btn-success">Poster le commentaire</button>
+
+    {{ form_end(formComment) }}
+
+{% endblock %}

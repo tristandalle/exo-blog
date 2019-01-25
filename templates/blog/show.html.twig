@@ -9,7 +9,7 @@
         </div>
     </article>
     <section id="commentaires">
-        <h3>Commentaires :</h3>
+        <h3>{{ article.comments | length }} commentaires :</h3>
         {% for comment in article.comments %}
         <div class="comment">
             <div class="row">
@@ -23,7 +23,15 @@
         </div>
         {% endfor %}
     </section>
+    {% if app.user %}
     <section id="add-comments">
-
+        <div class="row">
+            <a href="{{ path('article_comment', {'id' :article.id}) }}" class="btn btn-warning">Commenter l'article</a>
+        </div>
     </section>
+    {% else %}
+    <h4>Connectez-vous pour pouvoir commenter</h4>
+    <a href="{{ path('security_login') }}" class="btn btn-primary">Connexion</a>
+    {% endif %}
+
 {% endblock %}
